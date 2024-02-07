@@ -4,11 +4,7 @@ setup(
     name='stats_summary',
     version='0.1',
     packages=find_packages(),
-    install_requires=[
-        'numpy',  # Add your dependencies here
-        'scipy',
-        'math'
-    ],
+    install_requires=[],
     author='',
     author_email='',
     description='',
