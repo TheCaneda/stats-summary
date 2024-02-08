@@ -5,6 +5,9 @@ from . import inference_basics
 test_index = tests.tests
 comparison_table = test_comparison_table.comparison_table
 inference_summary = inference_basics.inferential_stats_summary
+tailed_tests_differences = inference_basics.tailed_tests_differences
+tailed_tests_separate_examples = inference_basics.tailed_tests_separate_examples
+tailed_tests_single_example = inference_basics.tailed_tests_single_example
 
 class Catalogue:
 
@@ -39,7 +42,19 @@ class Catalogue:
     def get_code_snippets(test_name):
         print(test_index[test_name].get('code_snippets'))
 
+    def get_thorough_examples(test_name):
+        print(test_index[test_name].get('thorough_examples'))
+
 class BasicInference:
 
     def get_summary():
         print(inference_summary)
+
+    def get_tailed_tests_difference():
+        print(tailed_tests_differences)
+
+    def get_tailed_tests_separate_examples():
+        print(tailed_tests_separate_examples)
+
+    def get_tailed_tests_single_example():
+        print(tailed_tests_single_example)

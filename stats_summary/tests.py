@@ -1,3 +1,5 @@
+from thorough_examples import thorough_examples
+
 summaries = {
     "mann-whitney-test": """
     The Mann-Whitney U test is a non-parametric statistical test used to compare TWO INDEPENDENT samples to 
@@ -421,7 +423,8 @@ tests = {
         "formulas": ["W = min(W+, W-) where W+ is the sum of positive ranks and W- is the sum of negative ranks"],
         "parametric": False,
         "summary": summaries.get('wilcoxon-test'),
-        "code_snippets": code_examples.get('wilcoxon')
+        "code_snippets": code_examples.get('wilcoxon'),
+        "thorough_examples": thorough_examples.get('wilcoxon')
     },
     "mann-whitney-test": {
         "use-cases": ["Comparing ranks between two independent samples", "Non-parametric alternative to the independent samples t-test"],
@@ -431,7 +434,8 @@ tests = {
         "formulas": ["U = n1*n2 + (n1*(n1+1)/2) - R1", "where n1 and n2 are the sample sizes, and R1 is the sum of ranks for sample 1"],
         "parametric": False,
         "summary": summaries.get('mann-whitney-test'),
-        "code_snippets": code_examples.get("mann-whitney-test")
+        "code_snippets": code_examples.get("mann-whitney-test"),
+        "thorough_examples": thorough_examples.get('mann_whitney')
     },
     "anova": {
         "use-cases": ["Comparing means across three or more groups", "Testing the effect of a categorical variable on a continuous outcome"],
@@ -460,7 +464,8 @@ tests = {
         "formulas": ["χ² = (12 / k(n+1)) ΣRi² - 3n(k+1)", "where k is the number of conditions, n is the number of blocks, and Ri is the sum of ranks for condition i"],
         "parametric": False,
         "summary": summaries.get('friedman-test'),
-        "code_snippets": code_examples.get("friedman")
+        "code_snippets": code_examples.get("friedman"),
+        "thorough_examples": thorough_examples.get('friedman')
     },
     "correlation": {
         "use-cases": ["Measuring the strength and direction of association between two continuous variables"],
@@ -495,7 +500,10 @@ tests = {
         "examples": ["Testing if reaction times in a cognitive psychology experiment follow a normal distribution", "Comparing the distribution of daily returns of two different stocks"],
         "calculation-process": ["Calculate the cumulative distribution function (CDF) for the reference distribution or for both samples in the case of the two-sample KS test", "Compute the maximum distance (D-statistic) between the CDFs", "Use the D-statistic to assess the hypothesis through the KS distribution"],
         "formulas": ["D = max|F1(x) - F2(x)| for the two-sample KS test", "D = max|Fn(x) - F(x)| for the one-sample KS test", "where F1(x) and F2(x) are the empirical distribution functions of the two samples, Fn(x) is the empirical distribution function of the sample, and F(x) is the CDF of the reference distribution"],
-        "code_snippets": code_examples.get('kolmogorov')
+        "code_snippets": code_examples.get('kolmogorov'),
+        "parametric": False,
+        "summary": summaries.get('kolmogorov-smirnov-test'),
+        "thorough_examples": thorough_examples.get('kolmogorov')
     }
 }
 
