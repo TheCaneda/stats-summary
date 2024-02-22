@@ -11,63 +11,60 @@ tailed_tests_single_example = inference_basics.tailed_tests_single_example
 
 class Catalogue:
 
+    @staticmethod
     def list_tests(parametric_only=False, non_parametric_only=False):
+        # Assuming test_index is defined elsewhere and accessible
         if parametric_only:
             return [test for test in test_index.keys() if test_index[test].parametric]
         elif non_parametric_only:
             return [test for test in test_index.keys() if not test_index[test].parametric]
-        return test_index.keys()
+        return list(test_index.keys())
 
+    @staticmethod
     def show_usecases():
+        # Assuming comparison_table is defined elsewhere and accessible
         print(comparison_table)
 
+    @staticmethod
     def get_test(test_name):
-        print( str(
-            f'[{test_name}]\n' +
-            test_index[test_name]
-        ))
+        # Ensure string conversion or handling for non-string types
+        test_details = str(test_index[test_name])
+        print(f'[{test_name}]\n{test_details}')
 
+    @staticmethod
     def get_test_examples(test_name):
-        print( str(
-            f'[{test_name} EXAMPLES]\n' + 
-            test_index[test_name].get('examples')
-        ))
+        examples = "\n".join(test_index[test_name].get('examples', []))  # Convert list to string
+        print(f'[{test_name} EXAMPLES]\n{examples}')
 
+    @staticmethod
     def get_test_description(test_name):
-        print( str(
-            f'[{test_name} DESCRIPTION]\n' +
-            test_index[test_name].get('description')
-        ))
+        description = str(test_index[test_name].get('description', ''))
+        print(f'[{test_name} DESCRIPTION]\n{description}')
 
+    @staticmethod
     def get_test_formulas(test_name):
-        print( str(
-            f'[{test_name} FORMULAS]\n' +
-            test_index[test_name].get('formulas')
-        ))
+        formulas = "\n".join(test_index[test_name].get('formulas', []))  # Convert list to string
+        print(f'[{test_name} FORMULAS]\n{formulas}')
 
+    @staticmethod
     def get_test_use_cases(test_name):
-        print( str(
-            f'[{test_name} USE CASES]\n' +
-            test_index[test_name].get('use_cases')
-        ))
+        use_cases = "\n".join(test_index[test_name].get('use_cases', []))  # Convert list to string
+        print(f'[{test_name} USE CASES]\n{use_cases}')
 
+    @staticmethod
     def get_test_summary(test_name):
-        print( str(
-            f'[{test_name} SUMMARY]\n' +
-            test_index[test_name].get('summary')
-        ))
+        summary = str(test_index[test_name].get('summary', ''))
+        print(f'[{test_name} SUMMARY]\n{summary}')
 
+    @staticmethod
     def get_code_snippets(test_name):
-        print( str(
-            f'[{test_name} CODE SNIPPETS]\n' +
-            test_index[test_name].get('code_snippets')
-        ))
+        code_snippets = "\n".join(test_index[test_name].get('code_snippets', []))  # Convert list to string
+        print(f'[{test_name} CODE SNIPPETS]\n{code_snippets}')
 
+    @staticmethod
     def get_thorough_examples(test_name):
-        print( str(
-            f"[{test_name} THOROUGH EXAMPLES]\n" +
-            test_index[test_name].get('thorough_examples')
-        ))
+        thorough_examples = "\n".join(test_index[test_name].get('thorough_examples', []))  # Convert list to string
+        print(f"[{test_name} THOROUGH EXAMPLES]\n{thorough_examples}")
 
 class BasicInference:
 
