@@ -444,7 +444,7 @@ tests = {
     "t-test": {
         "use-cases": ["Comparing the means of two independent samples", "Comparing the mean of a single sample against a known mean", "Comparing the means of two paired samples"],
         "description": "Used to compare the means of two groups or a single group against a standard when the population standard deviation is unknown.",
-        "examples": ["Testing the effectiveness of a new teaching method", "Measuring the impact of a drug on blood pressure"],
+        "examples": examples.get('z-test'),
         "calculation-process": ["Calculate the t-score", "Determine the degrees of freedom", "Find the p-value from the t-distribution"],
         "formulas": ["t = (X̄ - μ) / (s / √n) for one-sample", "t = (X̄1 - X̄2) / √((s1²/n1) + (s2²/n2)) for independent samples"],
         "parametric": True,
