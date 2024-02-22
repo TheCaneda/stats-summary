@@ -22,28 +22,52 @@ class Catalogue:
         return comparison_table
 
     def get_test(test_name):
-        return test_index[test_name]
+        return str(
+            f'[{test_name}]\n' +
+            test_index[test_name]
+        )
 
     def get_test_examples(test_name):
-        return test_index[test_name].get('examples')
+        return str(
+            f'[{test_name} EXAMPLES]\n' + 
+            test_index[test_name].get('examples')
+        )
 
     def get_test_description(test_name):
-        return test_index[test_name].get('description')
+        return str(
+            f'[{test_name} DESCRIPTION]\n' +
+            test_index[test_name].get('description')
+        )
 
     def get_test_formulas(test_name):
-        return test_index[test_name].get('formulas')
+        return str(
+            f'[{test_name} FORMULAS]\n' +
+            test_index[test_name].get('formulas')
+        )
 
     def get_test_use_cases(test_name):
-        return test_index[test_name].get('use_cases')
+        return str(
+            f'[{test_name} USE CASES]\n' +
+            test_index[test_name].get('use_cases')
+        )
 
     def get_test_summary(test_name):
-        return test_index[test_name].get('summary')
+        return str(
+            f'[{test_name} SUMMARY]\n' +
+            test_index[test_name].get('summary')
+        )
 
     def get_code_snippets(test_name):
-        return test_index[test_name].get('code_snippets')
+        return str(
+            f'[{test_name} CODE SNIPPETS]\n' +
+            test_index[test_name].get('code_snippets')
+        )
 
     def get_thorough_examples(test_name):
-        return test_index[test_name].get('thorough_examples')
+        return str(
+            f"[{test_name} THOROUGH EXAMPLES]\n" +
+            test_index[test_name].get('thorough_examples')
+        )
 
 class BasicInference:
 
