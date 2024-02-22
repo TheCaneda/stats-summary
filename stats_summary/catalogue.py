@@ -19,7 +19,7 @@ class Catalogue:
         return test_index.keys()
 
     def show_usecases():
-        return comparison_table
+        print(comparison_table)
 
     def get_test(test_name):
         print( str(
@@ -72,13 +72,13 @@ class Catalogue:
 class BasicInference:
 
     def get_summary():
-        return inference_summary
+        print(inference_summary)
 
     def get_tailed_tests_difference():
-        return tailed_tests_differences
+        print(tailed_tests_differences)
 
     def get_tailed_tests_separate_examples():
-        return tailed_tests_separate_examples
+        print(tailed_tests_separate_examples)
 
     def get_tailed_tests_single_example():
-        return tailed_tests_single_example
+        print(tailed_tests_single_example)
