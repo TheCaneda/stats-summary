@@ -376,11 +376,43 @@ code_examples = {
     """
 }
 
+examples = {
+    'z-test': [
+        """
+One-sample z-test Example:
+- Scenario: Testing if light bulbs last 1200 hours on average. A sample of 50 bulbs
+  has an average lifespan of 1180 hours.
+- Formula Application: z = (1180 - 1200) / (100 / sqrt(50)) = -1.41
+- Interpretation: Since z = -1.41, which is within the critical value of ±1.96,
+  there's insufficient evidence to reject the claim that the bulbs last 1200 hours
+  on average.
+
+Two-sample z-test Example:
+- Scenario: Comparing average test scores between two classes. Class A: avg=78, n=35.
+  Class B: avg=82, n=40.
+- Formula Application: z = (78 - 82) / sqrt(10^2/35 + 12^2/40) = -1.57
+- Interpretation: With z = -1.57, there's insufficient evidence to conclude a
+  significant difference between the class scores.
+
+Proportion z-test Example:
+- Scenario: Testing if a website redesign increased the purchase rate from 15% to
+  20% (40 out of 200 visitors).
+- Formula Application: z = (0.20 - 0.15) / sqrt(0.15(1-0.15)/200) = 1.98
+- Interpretation: Since z = 1.98, which is slightly above 1.96, there's evidence
+  suggesting a significant increase in the purchase rate after the website redesign.
+"""
+    ],
+    't-test': [
+
+    ],
+
+}
+
 tests = {
     "z-test": {
         "use-cases": ["Comparing proportions between two large independent samples", "Testing the difference between a sample mean and a population mean when the population standard deviation is known"],
         "description": "Used for testing hypotheses about proportions or means in large samples when the population standard deviation is known.",
-        "examples": ["Comparing the proportion of voters favoring a candidate in two cities", "Comparing a sample mean to a known population mean in quality control"],
+        "examples": examples.get('z-test'),
         "calculation-process": ["Calculate the test statistic based on sample and population parameters", "Determine the p-value from the z-distribution"],
         "formulas": ["Z = (X̄ - μ) / (σ / √n) for means", "Z = (p̂1 - p̂2) / √P(1-P)(1/n1 + 1/n2) for proportions"],
         "parametric": True,
