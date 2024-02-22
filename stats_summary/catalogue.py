@@ -29,42 +29,42 @@ class Catalogue:
     def get_test(test_name):
         # Ensure string conversion or handling for non-string types
         test_details = str(test_index[test_name])
-        print(f'[{test_name}]\n{test_details}')
+        print(f'[{test_name.upper()}]\n{test_details}')
 
     @staticmethod
     def get_test_examples(test_name):
         examples = "\n".join(test_index[test_name].get('examples', []))  # Convert list to string
-        print(f'[{test_name} EXAMPLES]\n{examples}')
+        print(f'[{test_name.upper()} EXAMPLES]\n{examples}')
 
     @staticmethod
     def get_test_description(test_name):
         description = str(test_index[test_name].get('description', ''))
-        print(f'[{test_name} DESCRIPTION]\n{description}')
+        print(f'[{test_name.upper()} DESCRIPTION]\n{description}')
 
     @staticmethod
     def get_test_formulas(test_name):
         formulas = "\n".join(test_index[test_name].get('formulas', []))  # Convert list to string
-        print(f'[{test_name} FORMULAS]\n{formulas}')
+        print(f'[{test_name.upper()} FORMULAS]\n{formulas}')
 
     @staticmethod
     def get_test_use_cases(test_name):
         use_cases = "\n".join(test_index[test_name].get('use_cases', []))  # Convert list to string
-        print(f'[{test_name} USE CASES]\n{use_cases}')
+        print(f'[{test_name.upper()} USE CASES]\n{use_cases}')
 
     @staticmethod
     def get_test_summary(test_name):
         summary = str(test_index[test_name].get('summary', ''))
-        print(f'[{test_name} SUMMARY]\n{summary}')
+        print(f'[{test_name.upper()} SUMMARY]\n{summary}')
 
     @staticmethod
     def get_code_snippets(test_name):
         code_snippets = "\n".join(test_index[test_name].get('code_snippets', []))  # Convert list to string
-        print(f'[{test_name} CODE SNIPPETS]\n{code_snippets}')
+        print(f'[{test_name.upper()} CODE SNIPPETS]\n{code_snippets}')
 
     @staticmethod
     def get_thorough_examples(test_name):
         thorough_examples = "\n".join(test_index[test_name].get('thorough_examples', []))  # Convert list to string
-        print(f"[{test_name} THOROUGH EXAMPLES]\n{thorough_examples}")
+        print(f"[{test_name.upper()} THOROUGH EXAMPLES]\n{thorough_examples}")
 
 class BasicInference:
 

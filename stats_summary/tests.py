@@ -382,6 +382,7 @@ examples = {
 One-sample z-test Example:
 - Scenario: Testing if light bulbs last 1200 hours on average. A sample of 50 bulbs
   has an average lifespan of 1180 hours.
+- Formula: z = (x̄ - μ) / (σ / √n)
 - Formula Application: z = (1180 - 1200) / (100 / sqrt(50)) = -1.41
 - Interpretation: Since z = -1.41, which is within the critical value of ±1.96,
   there's insufficient evidence to reject the claim that the bulbs last 1200 hours
@@ -390,6 +391,7 @@ One-sample z-test Example:
 Two-sample z-test Example:
 - Scenario: Comparing average test scores between two classes. Class A: avg=78, n=35.
   Class B: avg=82, n=40.
+- Formula: z = (x̄1 - x̄2) / √(σ1²/n1 + σ2²/n2)
 - Formula Application: z = (78 - 82) / sqrt(10^2/35 + 12^2/40) = -1.57
 - Interpretation: With z = -1.57, there's insufficient evidence to conclude a
   significant difference between the class scores.
@@ -397,6 +399,7 @@ Two-sample z-test Example:
 Proportion z-test Example:
 - Scenario: Testing if a website redesign increased the purchase rate from 15% to
   20% (40 out of 200 visitors).
+- Formula: z = (p̂ - p₀) / √(p₀(1-p₀)/n)
 - Formula Application: z = (0.20 - 0.15) / sqrt(0.15(1-0.15)/200) = 1.98
 - Interpretation: Since z = 1.98, which is slightly above 1.96, there's evidence
   suggesting a significant increase in the purchase rate after the website redesign.
