@@ -1,4 +1,5 @@
-from . import thorough_examples.thorough_examples as thorough_examples
+from . import thorough_examples
+from thorough_examples import Examples as thorough_examples
 
 summaries = {
     "mann-whitney-test": """
@@ -424,7 +425,7 @@ tests = {
         "parametric": False,
         "summary": summaries.get('wilcoxon-test'),
         "code_snippets": code_examples.get('wilcoxon'),
-        "thorough_examples": thorough_examples.get('wilcoxon')
+        "thorough_examples": thorough_examples.wilcoxon
     },
     "mann-whitney-test": {
         "use-cases": ["Comparing ranks between two independent samples", "Non-parametric alternative to the independent samples t-test"],
@@ -435,7 +436,7 @@ tests = {
         "parametric": False,
         "summary": summaries.get('mann-whitney-test'),
         "code_snippets": code_examples.get("mann-whitney-test"),
-        "thorough_examples": thorough_examples.get('mann_whitney')
+        "thorough_examples": thorough_examples.mann_whitney
     },
     "anova": {
         "use-cases": ["Comparing means across three or more groups", "Testing the effect of a categorical variable on a continuous outcome"],
@@ -465,7 +466,7 @@ tests = {
         "parametric": False,
         "summary": summaries.get('friedman-test'),
         "code_snippets": code_examples.get("friedman"),
-        "thorough_examples": thorough_examples.get('friedman')
+        "thorough_examples": thorough_examples.friedman
     },
     "correlation": {
         "use-cases": ["Measuring the strength and direction of association between two continuous variables"],
@@ -503,7 +504,7 @@ tests = {
         "code_snippets": code_examples.get('kolmogorov'),
         "parametric": False,
         "summary": summaries.get('kolmogorov-smirnov-test'),
-        "thorough_examples": thorough_examples.get('kolmogorov')
+        "thorough_examples": thorough_examples.kolmogorov
     }
 }
 
