@@ -1,4 +1,4 @@
-from thorough_examples import Examples
+from . import thorough_examples.thorough_examples as thorough_examples
 
 summaries = {
     "mann-whitney-test": """

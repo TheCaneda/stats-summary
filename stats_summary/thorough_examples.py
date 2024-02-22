@@ -244,8 +244,9 @@ methods on student performance are not significantly different from each other w
 
 """
 
-class Examples:
-   wilcoxon = wilcoxon
-   mann_whitney = mann_whitney
-   kolmogorv = kolmogorv
-   friedman = friedman
+thorough_examples = {
+    'wilcoxon': wilcoxon,
+    'mann_whitney': mann_whitney,
+    'kolmogorv': kolmogorv,
+    'friedman': friedman
+}
