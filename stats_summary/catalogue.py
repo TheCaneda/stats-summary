@@ -28,7 +28,7 @@ class Catalogue:
     @staticmethod
     def get_test(test_name):
         # Ensure string conversion or handling for non-string types
-        test_details = str(test_index[test_name])
+        test_details = test_index[test_name]
         print(f'[{test_name.upper()}]\n{test_details}')
 
     @staticmethod
@@ -48,7 +48,7 @@ class Catalogue:
 
     @staticmethod
     def get_use_cases(test_name):
-        use_cases = "\n".join(test_index[test_name].get('use_cases', []))  # Convert list to string
+        use_cases = str(test_index[test_name].get('use_cases', ''))
         print(f'[{test_name.upper()} USE CASES]\n{use_cases}')
 
     @staticmethod
