@@ -1,5 +1,11 @@
 from . import thorough_examples
 from .code_snippets.t_test import code_snippet as t_test_code_snippets
+from .code_snippet.z_test import code_snippet as z_test_code_snippets
+from .code_snippet.friedman import code_snippet as friedman_code_snippets
+from .code_snippet.wilcoxon import code_snippet as wilcoxon_code_snippets
+from .code_snippets.mann_whitney import code_snippet as mann_whitney_code_snippets
+from .code_snippets.kruskall import code_snippet as kruskall_code_snippets
+from .code_snippets.kolmogorov import code_snippet as kolmogorov_code_snippets
 
 summaries = {
     "mann-whitney-test": """
@@ -163,133 +169,12 @@ summaries = {
 }
 
 code_examples = {
-    "mann-whitney-test": [
-        """
-        # two different teaching methods on two different student groups (traditional x interactive)
-
-        group_a = np.array([ 75, 85, 80, 70, 90, 95, 65, 80 ])
-        group_b = np.array([ 85, 90, 75, 88, 80, 84, 82, 95 ])
-
-        full_array = [n for n in group_a] + [n for n in group_b]
-        full_array
-
-        ranked_array = scipy.stats.rankdata(full_array)
-
-        ranked_a = ranked_array[:len(group_a)]
-        ranked_b = ranked_array[len(group_a):]
-
-        U, p = scipy.stats.mannwhitneyu(group_a, group_b, alternative='two-sided') # use the samples, not the RANKED samples here
-        U, p
-
-        """],
-    "wilcoxon": 
-        """
-
-        # before and after a training program on a group of employees
-
-        before = [ 100, 105, 98, 87, 110, 103, 91, 95, 102, 106 ]
-        after = [ 108, 110, 99, 89, 115, 105, 93, 97, 105, 108 ]
-
-        diffs = [ n-m for (n,m) in zip(before, after) ]
-        diffs
-
-        scipy.stats.wilcoxon(diffs)
-
-        """,
-    "kruskall-wallis": 
-        """
-        
-        # independent samples
-
-        diet_a = [ 3, 2, 4, 5, 2 ]
-        diet_b = [ 4, 6, 5, 7, 6 ]
-        diet_c = [ 5, 4, 6, 7, 8 ]
-
-        scipy.stats.kruskal(diet_a, diet_b, diet_c)
-
-        """,
-    "kolmogorov": 
-        """
-
-        reaction_times = [ 5.2, 4.8, 6.1, 5.7, 5.4, 5.9, 4.9, 5.3, 6.2, 5.8 ]
-
-        # scipy.stats.kstest(reaction_times, scipy.stats.norm.cdf, N=len(reaction_times)) #wrong call
-        scipy.stats.kstest(reaction_times, 'norm', args=(np.mean(reaction_times), np.std(reaction_times, ddof=1))) #correct call
-
-        """,
-    "friedman": 
-        """
-    
-        # samples have relations
-
-        goals_first_tri = [ 3, 2, 4, 5, 2 ]
-        goals_second_tri = [ 4, 6, 5, 7, 6 ]
-        goals_third_tri = [ 5, 4, 6, 7, 8 ]
-
-        scipy.stats.friedmanchisquare(
-            goals_first_tri,
-            goals_second_tri,
-            goals_third_tri
-        )
-
-        """,
-    "z-test": 
-        """
-        \033[1m\033[94m[PROPORTION]\033[0m
-
-        \033[92mimport numpy as np
-        from scipy.stats import norm\033[0m
-
-        # Sample sizes
-        n1, n2 = 1200, 1500
-
-        # Number of successes (purchases)
-        x1, x2 = 150, 180
-
-        # Proportions of successes
-        p1, p2 = x1 / n1, x2 / n2
-
-        # Pooled proportion
-        pooled_p = (x1 + x2) / (n1 + n2)
-
-        # Standard error of the difference in proportion
-        std_error = np.sqrt(pooled_p * (1 - pooled_p) * (1/n1 + 1/n2))
-
-        # Z-score
-        z_score = (p1 - p2) / std_error
-
-        # P-value (two-tailed test)
-        p_value = 2 * (1 - norm.cdf(abs(z_score)))
-
-        # \033[93mprint(f"Z-score: {z_score}")
-        # print(f"P-value: {p_value}")\033[0m
-
-        \033[1m\033[94m[MEAN 2 IND. SAMPLES]\033[0m
-
-        \033[92mimport numpy as np
-        from scipy.stats import norm\033[0m
-
-        # Given sample means and standard deviations
-        mean1, std_dev1, n1 = 100, 15, 1200  # Sample 1: mean, standard deviation, and size
-        mean2, std_dev2, n2 = 105, 20, 1500  # Sample 2: mean, standard deviation, and size
-
-        # Calculate the standard error of the difference in mean
-        std_error_diff = np.sqrt((std_dev1**2 / n1) + (std_dev2**2 / n2))
-
-        # Calculate the Z-score for the difference in means
-        z_score = (mean1 - mean2) / std_error_diff
-
-        # Calculate the p-value (two-tailed test)
-        p_value = 2 * (1 - norm.cdf(abs(z_score)))
-
-        \033[93mprint(f"Z-score: {z_score}")
-        print(f"P-value: {p_value}")\033[0m
-
-        \033[1m\033[94m[POP X SAMPLE]\033[0m
-
-        z_score = (sample_mean - population_mean) / (population_std_dev / np.sqrt(sample_size))
-        p_value = 2 * (1 - norm.cdf(abs(z_score)))
-        """,
+    "mann-whitney-test": mann_whitney_code_snippets
+    "wilcoxon": wilcoxon_code_snippets,
+    "kruskall-wallis": kruskall_code_snippets,
+    "kolmogorov": kolmogorov_code_snippets,
+    "friedman": friedman_code_snippets,
+    "z-test": z_test_code_snippets,
     "t-test": t_test_code_snippets
 }
 
