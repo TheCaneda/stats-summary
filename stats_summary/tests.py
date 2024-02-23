@@ -25,17 +25,17 @@ from .examples.mann_whitney import examples as mann_whitney_examples
 
 summaries = {
     "mann-whitney-test": mann_whitney_summary,
-    "z-test": z_test_summary
+    "z-test": z_test_summary,
     "t-test": t_test_summary,
     "f-test": f_test_summary,
     "chi-square-test": f_test,
     "wilcoxon-test": wilcoxon_summary,
-    "anova": anova_summary
-    "kruskal-wallis-test": kruskall_summary
-    "friedman-test": friedman_summary
-    "correlation": correlation_summary
-    "regression": regression_summary
-    "time-series": time_series_summary
+    "anova": anova_summary,
+    "kruskal-wallis-test": kruskall_summary,
+    "friedman-test": friedman_summary,
+    "correlation": correlation_summary,
+    "regression": regression_summary,
+    "time-series": time_series_summary,
 }
 
 code_examples = {
