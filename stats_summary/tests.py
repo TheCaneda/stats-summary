@@ -96,7 +96,7 @@ tests = {
         "parametric": False,
         "summary": summaries.get('chi-square-test')
     },
-    "wilcoxon-test": {
+    "wilcoxon": {
         "use-cases": ["Comparing two related samples", "Non-parametric alternative to the paired t-test"],
         "description": "A non-parametric test for assessing whether two paired samples come from the same distribution.",
         "examples": examples.get('wilcoxon'),
@@ -107,7 +107,7 @@ tests = {
         "code_snippets": code_examples.get('wilcoxon'),
         "thorough_examples": thorough_examples.examples.get('wilcoxon')
     },
-    "mann-whitney-test": {
+    "mann-whitney": {
         "use-cases": ["Comparing ranks between two independent samples", "Non-parametric alternative to the independent samples t-test"],
         "description": "A non-parametric test used to determine if there is a statistically significant difference between the medians of two independent samples.",
         "examples": examples.get('mann-whitney-test'),
@@ -127,7 +127,7 @@ tests = {
         "parametric": True,
         "summary": summaries.get('anova')
     },
-    "kruskal-wallis-test": {
+    "kruskal-wallis": {
         "use-cases": ["Comparing medians across three or more independent groups", "Non-parametric alternative to one-way ANOVA"],
         "description": "A non-parametric method for testing whether samples originate from the same distribution. It is used for comparing two or more independent samples of equal or different sample sizes.",
         "examples": ["Comparing customer satisfaction ratings across multiple store locations", "Assessing the effectiveness of different types of pain relief medication"],
@@ -137,7 +137,7 @@ tests = {
         "summary": summaries.get('kruskal-wallis-test'),
         "code_snippets": code_examples.get("kruskall-wallis")
     },
-    "friedman-test": {
+    "friedman": {
         "use-cases": ["Comparing three or more paired groups", "Non-parametric alternative to repeated measures ANOVA"],
         "description": "Used for analyzing and comparing matched or paired samples across multiple test conditions. It assesses the differences in treatments across multiple test attempts.",
         "examples": ["Evaluating the performance of algorithms on different datasets", "Assessing the taste preference of a food product across different recipes"],
@@ -175,7 +175,7 @@ tests = {
         "parametric": True,
         "summary": summaries.get('time-series')
     },
-    "kolmogorov-smirnov-test": {
+    "kolmogorov-smirnov": {
         "use-cases": ["Comparing a sample distribution to a reference probability distribution (one-sample KS test)", "Comparing two sample distributions to determine if they are from the same distribution (two-sample KS test)"],
         "description": "The Kolmogorov-Smirnov (KS) test is a non-parametric test used to determine whether a sample comes from a specific distribution or to compare two samples. It is valuable for testing the goodness-of-fit between observed data and a known distribution or for comparing two empirical distributions without assuming them to follow a specific distribution.",
         "examples": ["Testing if reaction times in a cognitive psychology experiment follow a normal distribution", "Comparing the distribution of daily returns of two different stocks"],
