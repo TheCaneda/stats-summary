@@ -43,12 +43,12 @@ class Catalogue:
 
     @staticmethod
     def get_formulas(test_name):
-        formulas = "\n".join(test_index[test_name].get('formulas', []))  # Convert list to string
+        formulas = "\n".join(test_index[test_name].get('formulas', []))
         print(f'[{test_name.upper()} FORMULAS]\n{formulas}')
 
     @staticmethod
     def get_use_cases(test_name):
-        use_cases = str(test_index[test_name].get('use_cases', ''))
+        use_cases = str(test_index[test_name].get('use-cases', ''))
         print(f'[{test_name.upper()} USE CASES]\n{use_cases}')
 
     @staticmethod
