@@ -6,6 +6,7 @@ from .code_snippets.wilcoxon import code_snippet as wilcoxon_code_snippets
 from .code_snippets.mann_whitney import code_snippet as mann_whitney_code_snippets
 from .code_snippets.kruskall import code_snippet as kruskall_code_snippets
 from .code_snippets.kolmogorov import code_snippet as kolmogorov_code_snippets
+from .code_snippets.confidence_intervals import code_snippet as confidence_intervals_code_snippets
 from .summaries.mann_whitney import summary as mann_whitney_summary
 from .summaries.z_test import summary as z_test_summary
 from .summaries.t_test import summary as t_test_summary
@@ -46,7 +47,8 @@ code_examples = {
     "kolmogorov": kolmogorov_code_snippets,
     "friedman": friedman_code_snippets,
     "z-test": z_test_code_snippets,
-    "t-test": t_test_code_snippets
+    "t-test": t_test_code_snippets,
+    "confidence-intervals": confidence_intervals_code_snippets
 }
 
 examples = {
@@ -58,6 +60,12 @@ examples = {
 }
 
 tests = {
+    #CIs are not technically tests, but they are included here for the sake of completeness
+    "confidence-intervals": {
+        "use-cases": ["Estimating the population mean from a sample mean", "Determining the difference between two independent sample means"],
+        "description": "A statistical technique used to estimate the range in which a population parameter (mean, proportion, etc.) is likely to fall based on a sample statistic.",
+        "code_snippets": code_examples.get('confidence-intervals'),
+    },
     "z-test": {
         "use-cases": ["Comparing proportions between two large independent samples", "Testing the difference between a sample mean and a population mean when the population standard deviation is known"],
         "description": "Used for testing hypotheses about proportions or means in large samples when the population standard deviation is known.",
