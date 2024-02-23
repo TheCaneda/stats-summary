@@ -33,7 +33,7 @@ class Catalogue:
 
     @staticmethod
     def get_examples(test_name):
-        examples = "\n".join(test_index[test_name].get('examples', []))  # Convert list to string
+        examples = str(test_index[test_name].get('examples', ''))
         print(f'[{test_name.upper()} EXAMPLES]\n{examples}')
 
     @staticmethod
