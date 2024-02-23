@@ -32,27 +32,27 @@ class Catalogue:
         print(f'[{test_name.upper()}]\n{test_details}')
 
     @staticmethod
-    def get_test_examples(test_name):
+    def get_examples(test_name):
         examples = "\n".join(test_index[test_name].get('examples', []))  # Convert list to string
         print(f'[{test_name.upper()} EXAMPLES]\n{examples}')
 
     @staticmethod
-    def get_test_description(test_name):
+    def get_description(test_name):
         description = str(test_index[test_name].get('description', ''))
         print(f'[{test_name.upper()} DESCRIPTION]\n{description}')
 
     @staticmethod
-    def get_test_formulas(test_name):
+    def get_formulas(test_name):
         formulas = "\n".join(test_index[test_name].get('formulas', []))  # Convert list to string
         print(f'[{test_name.upper()} FORMULAS]\n{formulas}')
 
     @staticmethod
-    def get_test_use_cases(test_name):
+    def get_use_cases(test_name):
         use_cases = "\n".join(test_index[test_name].get('use_cases', []))  # Convert list to string
         print(f'[{test_name.upper()} USE CASES]\n{use_cases}')
 
     @staticmethod
-    def get_test_summary(test_name):
+    def get_summary(test_name):
         summary = str(test_index[test_name].get('summary', ''))
         print(f'[{test_name.upper()} SUMMARY]\n{summary}')
 
