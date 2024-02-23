@@ -17,6 +17,7 @@ from .summaries.friedman import summary as friedman_summary
 from .summaries.correlation import summary as correlation_summary
 from .summaries.regression import summary as regression_summary
 from .summaries.time_series import summary as time_series_summary
+from .summaries.chi_square import summary as chi_square_summary
 from .examples.z_test import examples as z_test_examples
 from .examples.t_test import examples as t_test_examples
 from .examples.f_test import examples as f_test_examples
@@ -28,7 +29,7 @@ summaries = {
     "z-test": z_test_summary,
     "t-test": t_test_summary,
     "f-test": f_test_summary,
-    "chi-square-test": f_test,
+    "chi-square-test": chi_square_summary,
     "wilcoxon-test": wilcoxon_summary,
     "anova": anova_summary,
     "kruskal-wallis-test": kruskall_summary,
