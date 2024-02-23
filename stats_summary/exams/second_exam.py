@@ -1,4 +1,5 @@
 content = """
+
 \033[1m\033[94mQuestão 1.\033[0m\033[1m Qual a diferença entre estatística paramétrica e não paramétrica?
 
 \033[0mA estatística paramétrica busca estimar parâmetros populacionais, como a média e a variância. Além
