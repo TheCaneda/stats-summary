@@ -1,7 +1,8 @@
 content = """
 
 \033[1m\033[94m1. Encontrando l tal que P(−l < X − µ < l) = 0.9\033[0m
-Usando o TLC, achamos que X segue aproximadamente uma Normal(0, 1). Para P(−l < X − µ < l) = 0.9, precisamos encontrar os quantis de uma Normal padrão que correspondam a essa probabilidade. Assumindo σ = 2 e n = 100, l é calculado como:
+Usando o TLC, achamos que X segue aproximadamente uma Normal(0, 1). Para P(−l < X − µ < l) = 0.9, 
+precisamos encontrar os quantis de uma Normal padrão que correspondam a essa probabilidade. Assumindo σ = 2 e n = 100, l é calculado como:
 
 \033[92m# Código Python para encontrar l\033[0m
 from scipy.stats import norm
@@ -9,7 +10,8 @@ l = norm.ppf(0.95) * 2 / (100**0.5)
 print(f"l aproximado: {l:.3f}")
 
 \033[1m\033[94m2. Tamanho da amostra para a média amostral não difira da média populacional por mais de 25% do desvio padrão\033[0m
-Para garantir que a média amostral esteja dentro de 25% do desvio padrão da média populacional com 95% de probabilidade, calculamos o tamanho da amostra necessário usando o inverso da função de distribuição acumulada da Normal padrão:
+Para garantir que a média amostral esteja dentro de 25% do desvio padrão da média populacional com 95% de probabilidade, 
+calculamos o tamanho da amostra necessário usando o inverso da função de distribuição acumulada da Normal padrão:
 
 \033[92m# Código Python para calcular o tamanho da amostra\033[0m
 z = norm.ppf(0.975)
