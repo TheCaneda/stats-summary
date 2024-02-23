@@ -426,6 +426,51 @@ examples = {
 - \033[1mInterpretation:\033[0m Since t = 3.16, which is beyond the critical value, there's evidence suggesting a significant effect of the study app on scores.
 """
     ],
+    'wilcoxon': [
+        """
+\033[1mWilcoxon Signed-Rank Test Example:\033[0m
+- \033[1mScenario:\033[0m Testing whether there's a significant difference in the median daily
+  calorie intake before and after following a specific diet plan for a group of individuals.
+- \033[1mFormula:\033[0m The test statistic is W, which is the sum of the ranks of the positive
+  differences between pairs. The calculation involves ranking the absolute differences, assigning
+  signs based on the direction of the difference, and then summing the ranks for the positive differences.
+- \033[1mFormula Application:\033[0m Hypothetically, if the sum of ranks for the positive differences
+  (after - before) is 120 and the number of pairs is 30, we would consult a Wilcoxon signed-rank
+  table or use software to determine the significance based on W = 120.
+- \033[1mInterpretation:\033[0m Depending on the critical value for W from the Wilcoxon signed-rank
+  table for n = 30 and a chosen significance level (e.g., α = 0.05), we determine if there's a
+  significant difference in median calorie intake. If W is less than the critical value, we reject
+  the null hypothesis, indicating a significant difference in medians before and after the diet.
+"""
+    ],
+    'mann-whitney-test': [
+        """
+\033[1mMann-Whitney U Test Example:\033[0m
+- \033[1mScenario:\033[0m Comparing the median waiting times at two different bus stops.
+- \033[1mFormula:\033[0m The test statistic is U, which is calculated based on the ranks of the
+  observations from both groups. The U statistic is used to determine the significance of the
+  difference in medians between the two groups.
+- \033[1mFormula Application:\033[0m Hypothetically, if the U statistic is 100 and the sample sizes
+    are 40 and 50, we would consult a Mann-Whitney U table or use software to determine the
+    significance based on U = 100.
+- \033[1mInterpretation:\033[0m Depending on the critical value for U from the Mann-Whitney U table
+    for the given sample sizes and a chosen significance level (e.g., α = 0.05), we determine if there's
+    a significant difference in median waiting times between the two bus stops.
+    """
+    ],
+    'f-test': [
+        """
+\033[1mF-Test Example:\033[0m
+- \033[1mScenario:\033[0m Comparing the variances of two different manufacturing processes.
+- \033[1mFormula:\033[0m The F-statistic is calculated as the ratio of the variances of the two groups.
+    The F-test is used to determine if the variances are significantly different from each other.
+- \033[1mFormula Application:\033[0m Hypothetically, if the F-statistic is 1.5, we would consult an
+    F-distribution table or use software to determine the significance based on F = 1.5.
+- \033[1mInterpretation:\033[0m Depending on the critical value for F from the F-distribution table for
+    the given degrees of freedom and a chosen significance level (e.g., α = 0.05), we determine if there's
+    a significant difference in variances between the two manufacturing processes.
+    """
+    ],
 
 }
 
@@ -472,7 +517,7 @@ tests = {
     "wilcoxon-test": {
         "use-cases": ["Comparing two related samples", "Non-parametric alternative to the paired t-test"],
         "description": "A non-parametric test for assessing whether two paired samples come from the same distribution.",
-        "examples": ["Evaluating pre- and post-treatment effects in a medical study", "Assessing learning outcomes before and after a training session"],
+        "examples": examples.get('wilcoxon'),
         "calculation-process": ["Rank the differences between pairs", "Sum the ranks for positive and negative differences", "Calculate the test statistic from the smaller of the two sums"],
         "formulas": ["W = min(W+, W-) where W+ is the sum of positive ranks and W- is the sum of negative ranks"],
         "parametric": False,
@@ -483,7 +528,7 @@ tests = {
     "mann-whitney-test": {
         "use-cases": ["Comparing ranks between two independent samples", "Non-parametric alternative to the independent samples t-test"],
         "description": "A non-parametric test used to determine if there is a statistically significant difference between the medians of two independent samples.",
-        "examples": ["Evaluating the effect of two different teaching methods on student performance", "Assessing customer satisfaction levels between two service providers"],
+        "examples": examples.get('mann-whitney-test'),
         "calculation-process": ["Rank all observations across both groups", "Sum the ranks for each group", "Calculate the U statistic based on ranks"],
         "formulas": ["U = n1*n2 + (n1*(n1+1)/2) - R1", "where n1 and n2 are the sample sizes, and R1 is the sum of ranks for sample 1"],
         "parametric": False,
