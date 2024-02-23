@@ -1,4 +1,4 @@
-contet = """
+content = """
 
 \033[1m\033[94m1. Bolas são sorteadas com reposição de uma urna contendo 1 bola branca e 2 bolas pretas.\033[0m
 
