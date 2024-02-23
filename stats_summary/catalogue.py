@@ -1,7 +1,7 @@
 from . import tests 
 from . import test_comparison_table
 from . import inference_basics
-from . import exams
+from . import exames
 
 test_index = tests.tests
 comparison_table = test_comparison_table.comparison_table
@@ -9,7 +9,7 @@ inference_summary = inference_basics.inferential_stats_summary
 tailed_tests_differences = inference_basics.tailed_tests_differences
 tailed_tests_separate_examples = inference_basics.tailed_tests_separate_examples
 tailed_tests_single_example = inference_basics.tailed_tests_single_example
-exames = exams.exams
+exames = exames.exams
 
 class Catalogue:
 
