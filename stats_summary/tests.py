@@ -1,5 +1,5 @@
 from . import thorough_examples
-from .code_snippets.t_test import code_snippets as t_test_code_snippets
+from .code_snippets.t_test import code_snippet as t_test_code_snippets
 
 summaries = {
     "mann-whitney-test": """
