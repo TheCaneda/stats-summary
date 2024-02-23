@@ -1,8 +1,8 @@
 from . import thorough_examples
 from .code_snippets.t_test import code_snippet as t_test_code_snippets
-from .code_snippet.z_test import code_snippet as z_test_code_snippets
-from .code_snippet.friedman import code_snippet as friedman_code_snippets
-from .code_snippet.wilcoxon import code_snippet as wilcoxon_code_snippets
+from .code_snippets.z_test import code_snippet as z_test_code_snippets
+from .code_snippets.friedman import code_snippet as friedman_code_snippets
+from .code_snippets.wilcoxon import code_snippet as wilcoxon_code_snippets
 from .code_snippets.mann_whitney import code_snippet as mann_whitney_code_snippets
 from .code_snippets.kruskall import code_snippet as kruskall_code_snippets
 from .code_snippets.kolmogorov import code_snippet as kolmogorov_code_snippets
