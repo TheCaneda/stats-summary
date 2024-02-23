@@ -22,14 +22,17 @@ class Catalogue:
 
     @staticmethod
     def show_usecases():
-        # Assuming comparison_table is defined elsewhere and accessible
         print(comparison_table)
 
     @staticmethod
     def get_test(test_name):
-        # Ensure string conversion or handling for non-string types
         test_details = test_index[test_name]
-        print(f'[{test_name.upper()}]\n{test_details}')
+        if test_details is None:
+            print(f'Test {test_name} not found')
+            return
+        elif type(test_details) == dict:
+            for key, value in test_details.items():
+                print(f'{key}: {value}')
 
     @staticmethod
     def get_examples(test_name):
@@ -43,7 +46,7 @@ class Catalogue:
 
     @staticmethod
     def get_formulas(test_name):
-        formulas = "\n".join(test_index[test_name].get('formulas', []))
+        formulas = str(test_index[test_name].get('formulas', ''))
         print(f'[{test_name.upper()} FORMULAS]\n{formulas}')
 
     @staticmethod
