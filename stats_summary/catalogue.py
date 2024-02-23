@@ -58,7 +58,7 @@ class Catalogue:
 
     @staticmethod
     def get_code_snippets(test_name):
-        code_snippets = "\n".join(test_index[test_name].get('code_snippets', []))  # Convert list to string
+        code_snippets = str(test_index[test_name].get('code_snippets', ''))
         print(f'[{test_name.upper()} CODE SNIPPETS]\n{code_snippets}')
 
     @staticmethod
