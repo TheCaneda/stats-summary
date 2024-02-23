@@ -1,6 +1,7 @@
 from . import tests 
 from . import test_comparison_table
 from . import inference_basics
+from . import exams
 
 test_index = tests.tests
 comparison_table = test_comparison_table.comparison_table
@@ -72,6 +73,11 @@ class Catalogue:
     def get_thorough_examples(test_name):
         thorough_examples = "\n".join(test_index.get(test_name, {}).get('thorough_examples', []))  # Convert list to string
         print(f"[{test_name.upper()} THOROUGH EXAMPLES]\n{thorough_examples}")
+
+    @staticmethod
+    def get_exam(exam_name):
+        exam = exams.exams.get(exam_name, '')
+        print(f'[{exam_name.upper()} EXAM]\n{exam}')
 
 class BasicInference:
 
