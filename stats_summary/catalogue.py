@@ -78,7 +78,7 @@ class Catalogue:
     @staticmethod
     def get_exam(exam_name):
         exam = exams.get(exam_name, '')
-        print(f'[{exam_name.upper()} EXAM]\n{exam}')c
+        print(f'[{exam_name.upper()} EXAM]\n{exam}')
 
 class BasicInference:
 
