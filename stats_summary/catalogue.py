@@ -53,6 +53,7 @@ class Catalogue:
 
     @staticmethod
     def get_use_cases(test_name):
+        use_cases = test_index[test_name].get('use_cases', '')
         if type(use_cases) == list:
             use_cases = "\n".join(test_index[test_name].get('use_cases', ''))
         print(f'[{test_name.upper()} USE CASES]\n{use_cases}')
