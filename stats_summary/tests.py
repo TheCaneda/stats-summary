@@ -288,7 +288,7 @@ code_examples = {
 
         z_score = (sample_mean - population_mean) / (population_std_dev / np.sqrt(sample_size))
         p_value = 2 * (1 - norm.cdf(abs(z_score)))
-        """
+        """,
     "t-test": 
         """
 
