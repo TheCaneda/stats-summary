@@ -9,7 +9,7 @@ inference_summary = inference_basics.inferential_stats_summary
 tailed_tests_differences = inference_basics.tailed_tests_differences
 tailed_tests_separate_examples = inference_basics.tailed_tests_separate_examples
 tailed_tests_single_example = inference_basics.tailed_tests_single_example
-exams = exams.exams
+exames = exams.exams
 
 class Catalogue:
 
@@ -77,7 +77,7 @@ class Catalogue:
 
     @staticmethod
     def get_exam(exam_name):
-        exam = exams.get(exam_name, '')
+        exam = exames.get(exam_name, '')
         print(f'[{exam_name.upper()} EXAM]\n{exam}')
 
 class BasicInference:
