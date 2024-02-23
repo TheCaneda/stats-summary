@@ -2,6 +2,7 @@ from . import tests
 from . import test_comparison_table
 from . import inference_basics
 from . import exames
+from . import prob_dist_integrals
 
 test_index = tests.tests
 comparison_table = test_comparison_table.comparison_table
@@ -10,6 +11,7 @@ tailed_tests_differences = inference_basics.tailed_tests_differences
 tailed_tests_separate_examples = inference_basics.tailed_tests_separate_examples
 tailed_tests_single_example = inference_basics.tailed_tests_single_example
 exames = exames.exams
+distributions_integrals = prob_dist_integrals.content
 
 class Catalogue:
 
@@ -93,3 +95,6 @@ class BasicInference:
 
     def get_tailed_tests_single_example():
         print(tailed_tests_single_example)
+
+    def get_integrals():
+        print(distributions_integrals)
