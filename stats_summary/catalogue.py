@@ -41,36 +41,36 @@ class Catalogue:
 
     @staticmethod
     def get_description(test_name):
-        description = str(test_index[test_name].get('description', ''))
+        description = str(test_index.get(test_name, {}).get('description', ''))
         print(f'[{test_name.upper()} DESCRIPTION]\n{description}')
 
     @staticmethod
     def get_formulas(test_name):
-        formulas = test_index[test_name].get('formulas', '')
+        formulas = test_index.get(test_name, {}).get('formulas', '')
         if type(formulas) == list:
             formulas = "\n".join(formulas)
         print(f'[{test_name.upper()} FORMULAS]\n{formulas}')
 
     @staticmethod
     def get_use_cases(test_name):
-        use_cases = test_index[test_name].get('use-cases', '')
+        use_cases = test_index.get(test_name, {}).get('use-cases', '')
         if type(use_cases) == list:
             use_cases = "\n".join(use_cases)
         print(f'[{test_name.upper()} USE CASES]\n{use_cases}')
 
     @staticmethod
     def get_summary(test_name):
-        summary = str(test_index[test_name].get('summary', ''))
+        summary = str(test_index.get(test_name, {}).get('summary', ''))
         print(f'[{test_name.upper()} SUMMARY]\n{summary}')
 
     @staticmethod
     def get_code_snippets(test_name):
-        code_snippets = str(test_index[test_name].get('code_snippets', ''))
+        code_snippets = str(test_index.get(test_name, {}).get('code_snippets', ''))
         print(f'[{test_name.upper()} CODE SNIPPETS]\n{code_snippets}')
 
     @staticmethod
     def get_thorough_examples(test_name):
-        thorough_examples = "\n".join(test_index[test_name].get('thorough_examples', []))  # Convert list to string
+        thorough_examples = "\n".join(test_index.get(test_name, {}).get('thorough_examples', []))  # Convert list to string
         print(f"[{test_name.upper()} THOROUGH EXAMPLES]\n{thorough_examples}")
 
 class BasicInference:
