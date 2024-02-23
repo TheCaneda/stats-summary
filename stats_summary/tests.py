@@ -169,7 +169,7 @@ summaries = {
 }
 
 code_examples = {
-    "mann-whitney-test": mann_whitney_code_snippets
+    "mann-whitney-test": mann_whitney_code_snippets,
     "wilcoxon": wilcoxon_code_snippets,
     "kruskall-wallis": kruskall_code_snippets,
     "kolmogorov": kolmogorov_code_snippets,
