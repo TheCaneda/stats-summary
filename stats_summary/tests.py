@@ -162,318 +162,320 @@ summaries = {
 }
 
 code_examples = {
-    "mann-whitney-test": """
+    "mann-whitney-test": [
+        """
+        # two different teaching methods on two different student groups (traditional x interactive)
 
-    # two different teaching methods on two different student groups (traditional x interactive)
+        group_a = np.array([ 75, 85, 80, 70, 90, 95, 65, 80 ])
+        group_b = np.array([ 85, 90, 75, 88, 80, 84, 82, 95 ])
 
-    group_a = np.array([ 75, 85, 80, 70, 90, 95, 65, 80 ])
-    group_b = np.array([ 85, 90, 75, 88, 80, 84, 82, 95 ])
+        full_array = [n for n in group_a] + [n for n in group_b]
+        full_array
 
-    full_array = [n for n in group_a] + [n for n in group_b]
-    full_array
+        ranked_array = scipy.stats.rankdata(full_array)
 
-    ranked_array = scipy.stats.rankdata(full_array)
+        ranked_a = ranked_array[:len(group_a)]
+        ranked_b = ranked_array[len(group_a):]
 
-    ranked_a = ranked_array[:len(group_a)]
-    ranked_b = ranked_array[len(group_a):]
+        U, p = scipy.stats.mannwhitneyu(group_a, group_b, alternative='two-sided') # use the samples, not the RANKED samples here
+        U, p
 
-    U, p = scipy.stats.mannwhitneyu(group_a, group_b, alternative='two-sided') # use the samples, not the RANKED samples here
-    U, p
+        """],
+    "wilcoxon": 
+        """
 
-    """,
-    "wilcoxon": """
+        # before and after a training program on a group of employees
 
-    # before and after a training program on a group of employees
+        before = [ 100, 105, 98, 87, 110, 103, 91, 95, 102, 106 ]
+        after = [ 108, 110, 99, 89, 115, 105, 93, 97, 105, 108 ]
 
-    before = [ 100, 105, 98, 87, 110, 103, 91, 95, 102, 106 ]
-    after = [ 108, 110, 99, 89, 115, 105, 93, 97, 105, 108 ]
+        diffs = [ n-m for (n,m) in zip(before, after) ]
+        diffs
 
-    diffs = [ n-m for (n,m) in zip(before, after) ]
-    diffs
+        scipy.stats.wilcoxon(diffs)
 
-    scipy.stats.wilcoxon(diffs)
+        """,
+    "kruskall-wallis": 
+        """
+        
+        # independent samples
 
-    """,
-    "kruskall-wallis": """
+        diet_a = [ 3, 2, 4, 5, 2 ]
+        diet_b = [ 4, 6, 5, 7, 6 ]
+        diet_c = [ 5, 4, 6, 7, 8 ]
+
+        scipy.stats.kruskal(diet_a, diet_b, diet_c)
+
+        """,
+    "kolmogorov": 
+        """
+
+        reaction_times = [ 5.2, 4.8, 6.1, 5.7, 5.4, 5.9, 4.9, 5.3, 6.2, 5.8 ]
+
+        # scipy.stats.kstest(reaction_times, scipy.stats.norm.cdf, N=len(reaction_times)) #wrong call
+        scipy.stats.kstest(reaction_times, 'norm', args=(np.mean(reaction_times), np.std(reaction_times, ddof=1))) #correct call
+
+        """,
+    "friedman": 
+        """
     
-    # independent samples
+        # samples have relations
 
-    diet_a = [ 3, 2, 4, 5, 2 ]
-    diet_b = [ 4, 6, 5, 7, 6 ]
-    diet_c = [ 5, 4, 6, 7, 8 ]
+        goals_first_tri = [ 3, 2, 4, 5, 2 ]
+        goals_second_tri = [ 4, 6, 5, 7, 6 ]
+        goals_third_tri = [ 5, 4, 6, 7, 8 ]
 
-    scipy.stats.kruskal(diet_a, diet_b, diet_c)
+        scipy.stats.friedmanchisquare(
+            goals_first_tri,
+            goals_second_tri,
+            goals_third_tri
+        )
 
-    """,
-    "kolmogorov": """
+        """,
+    "z-test": 
+        """
+        \033[1m\033[94m[PROPORTION]\033[0m
 
-    reaction_times = [ 5.2, 4.8, 6.1, 5.7, 5.4, 5.9, 4.9, 5.3, 6.2, 5.8 ]
+        \033[92mimport numpy as np
+        from scipy.stats import norm\033[0m
 
-    # scipy.stats.kstest(reaction_times, scipy.stats.norm.cdf, N=len(reaction_times)) #wrong call
-    scipy.stats.kstest(reaction_times, 'norm', args=(np.mean(reaction_times), np.std(reaction_times, ddof=1))) #correct call
+        # Sample sizes
+        n1, n2 = 1200, 1500
 
-    """,
-    "friedman": """
-    
-    # samples have relations
+        # Number of successes (purchases)
+        x1, x2 = 150, 180
 
-    goals_first_tri = [ 3, 2, 4, 5, 2 ]
-    goals_second_tri = [ 4, 6, 5, 7, 6 ]
-    goals_third_tri = [ 5, 4, 6, 7, 8 ]
+        # Proportions of successes
+        p1, p2 = x1 / n1, x2 / n2
 
-    scipy.stats.friedmanchisquare(
-        goals_first_tri,
-        goals_second_tri,
-        goals_third_tri
-    )
+        # Pooled proportion
+        pooled_p = (x1 + x2) / (n1 + n2)
 
-    """,
-    "z-test": """
+        # Standard error of the difference in proportion
+        std_error = np.sqrt(pooled_p * (1 - pooled_p) * (1/n1 + 1/n2))
 
-    |||||||||||||||||||||||||||| PROPORTION |||||||||||||||||||||||||||||||||\
+        # Z-score
+        z_score = (p1 - p2) / std_error
 
-    import numpy as np
-    from scipy.stats import norm
+        # P-value (two-tailed test)
+        p_value = 2 * (1 - norm.cdf(abs(z_score)))
 
-    # Sample sizes
-    n1, n2 = 1200, 1500
+        # \033[93mprint(f"Z-score: {z_score}")
+        # print(f"P-value: {p_value}")\033[0m
 
-    # Number of successes (purchases)
-    x1, x2 = 150, 180
+        \033[1m\033[94m[MEAN 2 IND. SAMPLES]\033[0m
 
-    # Proportions of successes
-    p1, p2 = x1 / n1, x2 / n2
+        \033[92mimport numpy as np
+        from scipy.stats import norm\033[0m
 
-    # Pooled proportion
-    pooled_p = (x1 + x2) / (n1 + n2)
+        # Given sample means and standard deviations
+        mean1, std_dev1, n1 = 100, 15, 1200  # Sample 1: mean, standard deviation, and size
+        mean2, std_dev2, n2 = 105, 20, 1500  # Sample 2: mean, standard deviation, and size
 
-    # Standard error of the difference in proportion
-    std_error = np.sqrt(pooled_p * (1 - pooled_p) * (1/n1 + 1/n2))
+        # Calculate the standard error of the difference in mean
+        std_error_diff = np.sqrt((std_dev1**2 / n1) + (std_dev2**2 / n2))
 
-    # Z-score
-    z_score = (p1 - p2) / std_error
+        # Calculate the Z-score for the difference in means
+        z_score = (mean1 - mean2) / std_error_diff
 
-    # P-value (two-tailed test)
-    p_value = 2 * (1 - norm.cdf(abs(z_score)))
+        # Calculate the p-value (two-tailed test)
+        p_value = 2 * (1 - norm.cdf(abs(z_score)))
 
-    # print(f"Z-score: {z_score}")
-    # print(f"P-value: {p_value}")
+        \033[93mprint(f"Z-score: {z_score}")
+        print(f"P-value: {p_value}")\033[0m
 
-    |||||||||||||||||||||||||||| MEAN 2 IND. SAMPLES  |||||||||||||||||||||||||||||||||||||
+        \033[1m\033[94m[POP X SAMPLE]\033[0m
 
-    import numpy as np
-    from scipy.stats import norm
+        z_score = (sample_mean - population_mean) / (population_std_dev / np.sqrt(sample_size))
+        p_value = 2 * (1 - norm.cdf(abs(z_score)))
+        """
+    "t-test": 
+        """
 
-    # Given sample means and standard deviations
-    mean1, std_dev1, n1 = 100, 15, 1200  # Sample 1: mean, standard deviation, and size
-    mean2, std_dev2, n2 = 105, 20, 1500  # Sample 2: mean, standard deviation, and size
+        |||||||||||||||||||||||||||| MEAN 2 IND. SAMPLES |||||||||||||||||||||||||||||||||||||
 
-    # Calculate the standard error of the difference in mean
-    std_error_diff = np.sqrt((std_dev1**2 / n1) + (std_dev2**2 / n2))
+        import numpy as np
+        from scipy.stats import t
 
-    # Calculate the Z-score for the difference in means
-    z_score = (mean1 - mean2) / std_error_diff
+        # Given sample means, standard deviations, and sizes
+        mean1, std_dev1, n1 = 100, 15, 30  # Sample 1: mean, standard deviation, and size
+        mean2, std_dev2, n2 = 105, 20, 30  # Sample 2: mean, standard deviation, and size
 
-    # Calculate the p-value (two-tailed test)
-    p_value = 2 * (1 - norm.cdf(abs(z_score)))
+        # Calculate the standard error of the difference in means
+        std_error_diff = np.sqrt((std_dev1**2 / n1) + (std_dev2**2 / n2))
 
-    print(f"Z-score: {z_score}")
-    print(f"P-value: {p_value}")
+        # Calculate the degrees of freedom
+        df = min(n1 - 1, n2 - 1)
 
-    ||||||||||||||||||||||||||||| POP X SAMPLE ||||||||||||||||||||||||||||||||||||||||||||
+        # Calculate the t-score for the difference in means
+        t_score = (mean1 - mean2) / std_error_diff
 
-    z_score = (sample_mean - population_mean) / (population_std_dev / np.sqrt(sample_size))
-    p_value = 2 * (1 - norm.cdf(abs(z_score)))
+        # Calculate the p-value (two-tailed test)
+        p_value = 2 * (1 - t.cdf(abs(t_score), df))
 
-    """,
-    "t-test": """
+        print(f"T-score: {t_score}")
+        print(f"P-value: {p_value}")
 
-    |||||||||||||||||||||||||||| MEAN 2 IND. SAMPLES |||||||||||||||||||||||||||||||||||||
+        |||||||||||||||||||||||||||| MEAN PAIRED SAMPLES |||||||||||||||||||||||||||||||||||||
 
-    import numpy as np
-    from scipy.stats import t
+        import numpy as np
+        from scipy.stats import t
 
-    # Given sample means, standard deviations, and sizes
-    mean1, std_dev1, n1 = 100, 15, 30  # Sample 1: mean, standard deviation, and size
-    mean2, std_dev2, n2 = 105, 20, 30  # Sample 2: mean, standard deviation, and size
+        # Data for paired samples
+        before = np.array([100, 105, 98, 87, 110])
+        after = np.array([108, 110, 99, 89, 115])
 
-    # Calculate the standard error of the difference in means
-    std_error_diff = np.sqrt((std_dev1**2 / n1) + (std_dev2**2 / n2))
+        # Calculate the differences
+        diffs = after - before
 
-    # Calculate the degrees of freedom
-    df = min(n1 - 1, n2 - 1)
+        # Calculate the mean of the differences
+        mean_diff = np.mean(diffs)
 
-    # Calculate the t-score for the difference in means
-    t_score = (mean1 - mean2) / std_error_diff
+        # Calculate the standard deviation of the differences
+        std_diff = np.std(diffs, ddof=1)
 
-    # Calculate the p-value (two-tailed test)
-    p_value = 2 * (1 - t.cdf(abs(t_score), df))
+        # Sample size
+        n = len(diffs)
 
-    print(f"T-score: {t_score}")
-    print(f"P-value: {p_value}")
+        # Degrees of freedom
+        df = n - 1
 
-    |||||||||||||||||||||||||||| MEAN PAIRED SAMPLES |||||||||||||||||||||||||||||||||||||
+        # Calculate the t-score
+        t_score = mean_diff / (std_diff / np.sqrt(n))
 
-    import numpy as np
-    from scipy.stats import t
+        # Calculate the p-value (two-tailed test)
+        p_value = 2 * (1 - t.cdf(abs(t_score), df))
 
-    # Data for paired samples
-    before = np.array([100, 105, 98, 87, 110])
-    after = np.array([108, 110, 99, 89, 115])
+        print(f"T-score: {t_score}")
+        print(f"P-value: {p_value}")
 
-    # Calculate the differences
-    diffs = after - before
+        ||||||||||||||||||||||||||||| SINGLE SAMPLE VS POPULATION MEAN |||||||||||||||||||||||
 
-    # Calculate the mean of the differences
-    mean_diff = np.mean(diffs)
+        import numpy as np
+        from scipy.stats import t
 
-    # Calculate the standard deviation of the differences
-    std_diff = np.std(diffs, ddof=1)
+        # Sample data
+        sample = np.array([100, 102, 104, 98, 96, 101, 99, 103, 97, 105])
 
-    # Sample size
-    n = len(diffs)
+        # Population mean
+        pop_mean = 100
 
-    # Degrees of freedom
-    df = n - 1
+        # Sample mean and standard deviation
+        sample_mean = np.mean(sample)
+        sample_std = np.std(sample, ddof=1)
 
-    # Calculate the t-score
-    t_score = mean_diff / (std_diff / np.sqrt(n))
+        # Sample size and degrees of freedom
+        n = len(sample)
+        df = n - 1
 
-    # Calculate the p-value (two-tailed test)
-    p_value = 2 * (1 - t.cdf(abs(t_score), df))
+        # Calculate the t-score
+        t_score = (sample_mean - pop_mean) / (sample_std / np.sqrt(n))
 
-    print(f"T-score: {t_score}")
-    print(f"P-value: {p_value}")
+        # Calculate the p-value (two-tailed test)
+        p_value = 2 * (1 - t.cdf(abs(t_score), df))
 
-    ||||||||||||||||||||||||||||| SINGLE SAMPLE VS POPULATION MEAN |||||||||||||||||||||||
+        print(f"T-score: {t_score}")
+        print(f"P-value: {p_value}")
 
-    import numpy as np
-    from scipy.stats import t
-
-    # Sample data
-    sample = np.array([100, 102, 104, 98, 96, 101, 99, 103, 97, 105])
-
-    # Population mean
-    pop_mean = 100
-
-    # Sample mean and standard deviation
-    sample_mean = np.mean(sample)
-    sample_std = np.std(sample, ddof=1)
-
-    # Sample size and degrees of freedom
-    n = len(sample)
-    df = n - 1
-
-    # Calculate the t-score
-    t_score = (sample_mean - pop_mean) / (sample_std / np.sqrt(n))
-
-    # Calculate the p-value (two-tailed test)
-    p_value = 2 * (1 - t.cdf(abs(t_score), df))
-
-    print(f"T-score: {t_score}")
-    print(f"P-value: {p_value}")
-
-    """
+        """
 }
 
 examples = {
     'z-test': [
         """
-\033[1mOne-sample z-test Example:\033[0m
-- \033[1mScenario:\033[0m Testing if light bulbs last 1200 hours on average. A sample of 50 bulbs
-  has an average lifespan of 1180 hours.
-- \033[1mFormula:\033[0m z = (x̄ - μ) / (σ / √n)
-- \033[1mFormula Application:\033[0m z = (1180 - 1200) / (100 / sqrt(50)) = -1.41
-- \033[1mInterpretation:\033[0m Since z = -1.41, which is within the critical value of ±1.96,
-  there's insufficient evidence to reject the claim that the bulbs last 1200 hours
-  on average.
+        \033[1mOne-sample z-test Example:\033[0m
+        - \033[1mScenario:\033[0m Testing if light bulbs last 1200 hours on average. A sample of 50 bulbs
+        has an average lifespan of 1180 hours.
+        - \033[1mFormula:\033[0m z = (x̄ - μ) / (σ / √n)
+        - \033[1mFormula Application:\033[0m z = (1180 - 1200) / (100 / sqrt(50)) = -1.41
+        - \033[1mInterpretation:\033[0m Since z = -1.41, which is within the critical value of ±1.96,
+        there's insufficient evidence to reject the claim that the bulbs last 1200 hours
+        on average.
 
-\033[1mTwo-sample z-test Example:\033[0m
-- \033[1mScenario:\033[0m Comparing average test scores between two classes. Class A: avg=78, n=35.
-  Class B: avg=82, n=40.
-- \033[1mFormula:\033[0m z = (x̄1 - x̄2) / √(σ1²/n1 + σ2²/n2)
-- \033[1mFormula Application:\033[0m z = (78 - 82) / sqrt(10^2/35 + 12^2/40) = -1.57
-- \033[1mInterpretation:\033[0m With z = -1.57, there's insufficient evidence to conclude a
-  significant difference between the class scores.
+        \033[1mTwo-sample z-test Example:\033[0m
+        - \033[1mScenario:\033[0m Comparing average test scores between two classes. Class A: avg=78, n=35.
+        Class B: avg=82, n=40.
+        - \033[1mFormula:\033[0m z = (x̄1 - x̄2) / √(σ1²/n1 + σ2²/n2)
+        - \033[1mFormula Application:\033[0m z = (78 - 82) / sqrt(10^2/35 + 12^2/40) = -1.57
+        - \033[1mInterpretation:\033[0m With z = -1.57, there's insufficient evidence to conclude a
+        significant difference between the class scores.
 
-\033[1mProportion z-test Example:\033[0m
-- \033[1mScenario:\033[0m Testing if a website redesign increased the purchase rate from 15% to
-  20% (40 out of 200 visitors).
-- \033[1mFormula:\033[0m z = (p̂ - p₀) / √(p₀(1-p₀)/n)
-- \033[1mFormula Application:\033[0m z = (0.20 - 0.15) / sqrt(0.15(1-0.15)/200) = 1.98
-- \033[1mInterpretation:\033[0m Since z = 1.98, which is slightly above 1.96, there's evidence
-  suggesting a significant increase in the purchase rate after the website redesign.
-"""
+        \033[1mProportion z-test Example:\033[0m
+        - \033[1mScenario:\033[0m Testing if a website redesign increased the purchase rate from 15% to
+        20% (40 out of 200 visitors).
+        - \033[1mFormula:\033[0m z = (p̂ - p₀) / √(p₀(1-p₀)/n)
+        - \033[1mFormula Application:\033[0m z = (0.20 - 0.15) / sqrt(0.15(1-0.15)/200) = 1.98
+        - \033[1mInterpretation:\033[0m Since z = 1.98, which is slightly above 1.96, there's evidence
+        suggesting a significant increase in the purchase rate after the website redesign.
+        """
     ],
     't-test': [
         """
-\033[1mOne-sample t-test Example:\033[0m
-- \033[1mScenario:\033[0m Testing if the average height of a sample of students is different from the national average height of 170 cm.
-- \033[1mFormula:\033[0m t = (x̄ - μ) / (s / √n)
-- \033[1mFormula Application:\033[0m Hypothetically, t = (168 - 170) / (10 / sqrt(30)) = -1.09
-- \033[1mInterpretation:\033[0m Since t is within the critical value range, there's insufficient evidence to reject the null hypothesis that the sample mean is the same as the national average.
+        \033[1mOne-sample t-test Example:\033[0m
+        - \033[1mScenario:\033[0m Testing if the average height of a sample of students is different from the national average height of 170 cm.
+        - \033[1mFormula:\033[0m t = (x̄ - μ) / (s / √n)
+        - \033[1mFormula Application:\033[0m Hypothetically, t = (168 - 170) / (10 / sqrt(30)) = -1.09
+        - \033[1mInterpretation:\033[0m Since t is within the critical value range, there's insufficient evidence to reject the null hypothesis that the sample mean is the same as the national average.
 
-\033[1mTwo-sample (independent) t-test Example:\033[0m
-- \033[1mScenario:\033[0m Comparing the average test scores of students from two different schools.
-- \033[1mFormula:\033[0m t = (x̄1 - x̄2) / √(s1²/n1 + s2²/n2)
-- \033[1mFormula Application:\033[0m Hypothetically, t = (75 - 80) / sqrt((15^2/50) + (20^2/50)) = -1.89
-- \033[1mInterpretation:\033[0m With t = -1.89, there's insufficient evidence to conclude a significant difference in average test scores.
+        \033[1mTwo-sample (independent) t-test Example:\033[0m
+        - \033[1mScenario:\033[0m Comparing the average test scores of students from two different schools.
+        - \033[1mFormula:\033[0m t = (x̄1 - x̄2) / √(s1²/n1 + s2²/n2)
+        - \033[1mFormula Application:\033[0m Hypothetically, t = (75 - 80) / sqrt((15^2/50) + (20^2/50)) = -1.89
+        - \033[1mInterpretation:\033[0m With t = -1.89, there's insufficient evidence to conclude a significant difference in average test scores.
 
-\033[1mPaired-sample t-test Example:\033[0m
-- \033[1mScenario:\033[0m Testing the effect of a study app on the scores of students by comparing their scores before and after using the app.
-- \033[1mFormula:\033[0m t = (d̄ - μd) / (sd / √n), where d̄ is the mean difference, and μd is the hypothesized mean difference (often 0).
-- \033[1mFormula Application:\033[0m Hypothetically, t = (5 - 0) / (10 / sqrt(30)) = 3.16
-- \033[1mInterpretation:\033[0m Since t = 3.16, which is beyond the critical value, there's evidence suggesting a significant effect of the study app on scores.
-"""
+        \033[1mPaired-sample t-test Example:\033[0m
+        - \033[1mScenario:\033[0m Testing the effect of a study app on the scores of students by comparing their scores before and after using the app.
+        - \033[1mFormula:\033[0m t = (d̄ - μd) / (sd / √n), where d̄ is the mean difference, and μd is the hypothesized mean difference (often 0).
+        - \033[1mFormula Application:\033[0m Hypothetically, t = (5 - 0) / (10 / sqrt(30)) = 3.16
+        - \033[1mInterpretation:\033[0m Since t = 3.16, which is beyond the critical value, there's evidence suggesting a significant effect of the study app on scores.
+        """
     ],
     'wilcoxon': [
         """
-\033[1mWilcoxon Signed-Rank Test Example:\033[0m
-- \033[1mScenario:\033[0m Testing whether there's a significant difference in the median daily
-  calorie intake before and after following a specific diet plan for a group of individuals.
-- \033[1mFormula:\033[0m The test statistic is W, which is the sum of the ranks of the positive
-  differences between pairs. The calculation involves ranking the absolute differences, assigning
-  signs based on the direction of the difference, and then summing the ranks for the positive differences.
-- \033[1mFormula Application:\033[0m Hypothetically, if the sum of ranks for the positive differences
-  (after - before) is 120 and the number of pairs is 30, we would consult a Wilcoxon signed-rank
-  table or use software to determine the significance based on W = 120.
-- \033[1mInterpretation:\033[0m Depending on the critical value for W from the Wilcoxon signed-rank
-  table for n = 30 and a chosen significance level (e.g., α = 0.05), we determine if there's a
-  significant difference in median calorie intake. If W is less than the critical value, we reject
-  the null hypothesis, indicating a significant difference in medians before and after the diet.
-"""
+        \033[1mWilcoxon Signed-Rank Test Example:\033[0m
+        - \033[1mScenario:\033[0m Testing whether there's a significant difference in the median daily
+        calorie intake before and after following a specific diet plan for a group of individuals.
+        - \033[1mFormula:\033[0m The test statistic is W, which is the sum of the ranks of the positive
+        differences between pairs. The calculation involves ranking the absolute differences, assigning
+        signs based on the direction of the difference, and then summing the ranks for the positive differences.
+        - \033[1mFormula Application:\033[0m Hypothetically, if the sum of ranks for the positive differences
+        (after - before) is 120 and the number of pairs is 30, we would consult a Wilcoxon signed-rank
+        table or use software to determine the significance based on W = 120.
+        - \033[1mInterpretation:\033[0m Depending on the critical value for W from the Wilcoxon signed-rank
+        table for n = 30 and a chosen significance level (e.g., α = 0.05), we determine if there's a
+        significant difference in median calorie intake. If W is less than the critical value, we reject
+        the null hypothesis, indicating a significant difference in medians before and after the diet.
+        """
     ],
     'mann-whitney-test': [
         """
-\033[1mMann-Whitney U Test Example:\033[0m
-- \033[1mScenario:\033[0m Comparing the median waiting times at two different bus stops.
-- \033[1mFormula:\033[0m The test statistic is U, which is calculated based on the ranks of the
-  observations from both groups. The U statistic is used to determine the significance of the
-  difference in medians between the two groups.
-- \033[1mFormula Application:\033[0m Hypothetically, if the U statistic is 100 and the sample sizes
-    are 40 and 50, we would consult a Mann-Whitney U table or use software to determine the
-    significance based on U = 100.
-- \033[1mInterpretation:\033[0m Depending on the critical value for U from the Mann-Whitney U table
-    for the given sample sizes and a chosen significance level (e.g., α = 0.05), we determine if there's
-    a significant difference in median waiting times between the two bus stops.
-    """
+        \033[1mMann-Whitney U Test Example:\033[0m
+        - \033[1mScenario:\033[0m Comparing the median waiting times at two different bus stops.
+        - \033[1mFormula:\033[0m The test statistic is U, which is calculated based on the ranks of the
+        observations from both groups. The U statistic is used to determine the significance of the
+        difference in medians between the two groups.
+        - \033[1mFormula Application:\033[0m Hypothetically, if the U statistic is 100 and the sample sizes
+            are 40 and 50, we would consult a Mann-Whitney U table or use software to determine the
+            significance based on U = 100.
+        - \033[1mInterpretation:\033[0m Depending on the critical value for U from the Mann-Whitney U table
+            for the given sample sizes and a chosen significance level (e.g., α = 0.05), we determine if there's
+            a significant difference in median waiting times between the two bus stops.
+        """
     ],
     'f-test': [
         """
-\033[1mF-Test Example:\033[0m
-- \033[1mScenario:\033[0m Comparing the variances of two different manufacturing processes.
-- \033[1mFormula:\033[0m The F-statistic is calculated as the ratio of the variances of the two groups.
-    The F-test is used to determine if the variances are significantly different from each other.
-- \033[1mFormula Application:\033[0m Hypothetically, if the F-statistic is 1.5, we would consult an
-    F-distribution table or use software to determine the significance based on F = 1.5.
-- \033[1mInterpretation:\033[0m Depending on the critical value for F from the F-distribution table for
-    the given degrees of freedom and a chosen significance level (e.g., α = 0.05), we determine if there's
-    a significant difference in variances between the two manufacturing processes.
-    """
+        \033[1mF-Test Example:\033[0m
+        - \033[1mScenario:\033[0m Comparing the variances of two different manufacturing processes.
+        - \033[1mFormula:\033[0m The F-statistic is calculated as the ratio of the variances of the two groups.
+            The F-test is used to determine if the variances are significantly different from each other.
+        - \033[1mFormula Application:\033[0m Hypothetically, if the F-statistic is 1.5, we would consult an
+            F-distribution table or use software to determine the significance based on F = 1.5.
+        - \033[1mInterpretation:\033[0m Depending on the critical value for F from the F-distribution table for
+            the given degrees of freedom and a chosen significance level (e.g., α = 0.05), we determine if there's
+            a significant difference in variances between the two manufacturing processes.
+        """
     ],
-
 }
-
 
 tests = {
     "z-test": {
