@@ -1,5 +1,5 @@
 content = """
-\033[1mQuestão 1. Qual a diferença entre estatística paramétrica e não paramétrica?
+\033[1m\033[94mQuestão 1.\033[0m\033[1m Qual a diferença entre estatística paramétrica e não paramétrica?
 
 \033[0mA estatística paramétrica busca estimar parâmetros populacionais, como a média e a variância. Além
 disso, nesse tipo de inferência, a distribuição dos estimadores é conhecida, assim como as suposições
@@ -9,7 +9,7 @@ amostral converge para uma distribuição conhecida, a normal, de média µ e va
 não paramétrica, não se busca estimar parâmetros desconhecidos, além disso, não são feitas suposições
 com relação à população, são métodos mais flexíveis.
 
-\033[1mQuestão 2. Em um teste de hipóteses para comparação de um vetor de médias (H0 : µ1 = µ2) foi
+\033[1m\033[94mQuestão 2.\033[0m\033[1m Em um teste de hipóteses para comparação de um vetor de médias (H0 : µ1 = µ2) foi
 observado um p-valor de 0,029. O pesquisador do estudo escreveu a seguinte conclusão:\033[0m "há 2,9% de
 probabilidade de do vetor de médias serem iguais e 97,1% de probabilidade de serem diferentes". 
 A conclusão do pesquisador está correta?
@@ -18,14 +18,14 @@ Está incorreta, o p-valor não é a probabilidade de H0 ser verdade. A interpre
 que H0 é verdade (não há diferença entre as médias), 0,029 de probabilidade de ocorrer a diferença de
 média observada ou uma diferença mais extrema.
 
-\033[1mQuestão 3. Os testes paramétricos são mais poderosos que os testes não paramétricos? Justifique a sua
+\033[1m\033[94mQuestão 3.\033[0m\033[1m Os testes paramétricos são mais poderosos que os testes não paramétricos? Justifique a sua
 resposta?
 \033[0mSim, eles são mais poderosos, pois fazem mais suposições. Os testes não paramétricos são mais flexíveis
 e não precisam respeitar os mesmos pressupostos dos testes paramétricos que dependem de algum tipo
 de parâmetro. Logo, é mais difícil captar diferenças significativas, isto é, a probabilidade de rejeitar H0
 dado que ele é falso nos testes paramétricos é maior que nos testes não paramétricos.
 
-\033[1mQuestão 4. Suponha que você é um cientista de dados trabalhando em uma empresa de transporte de
+\033[1m\033[94mQuestão 4.\033[0m\033[1m Suponha que você é um cientista de dados trabalhando em uma empresa de transporte de
 mercadorias. A empresa está interessada em analisar o tempo que leva para os motoristas entregarem os
 produtos em diferentes regiões. Você coletou uma amostra de 15 observações sobre o tempo de entrega
 de motoristas em uma rota específica.
@@ -43,7 +43,7 @@ D = 0.99326, p-value = 3.897e-14 ou D = 0.12754, p-value = 0.9571
 5) Aceita H0
 6) Há evidências que os dados seguem uma distribuição exponencial.
 
-\033[1mQuestão 5. Um estudo comparativo foi conduzido entre dois grupos de adolescentes que jogam videogames
+\033[1m\033[94mQuestão 5.\033[0m\033[1m Um estudo comparativo foi conduzido entre dois grupos de adolescentes que jogam videogames
 regularmente. Um grupo dedicou horas extras à prática, enquanto o outro grupo utilizou técnicas de relaxamento, como meditação ou exercícios de respiração, antes de jogar. Após um período de tempo definido,
 os participantes foram avaliados quanto ao seu desempenho em uma série de jogos. 
 Considerando que as duas variáveis possuem distribuição aproximadamente simétrica, avalie se há diferença entre os métodos, utilize um α = 0,02.\033[0m
@@ -59,7 +59,7 @@ Grupo técnicas de relaxamento n=40 x = 70 s² = 20
 5) Rejeito H0, pvalor < α
 6) Deve haver diferença entre os métodos, há evidências de que as horas extras possuem um desempenho médio superior às técnicas de relaxamento.
 
-\033[1mQuestão 6. Suponha que você está conduzindo um estudo para avaliar o impacto de um novo algoritmo
+\033[1m\033[94mQuestão 6.\033[0m\033[1m Suponha que você está conduzindo um estudo para avaliar o impacto de um novo algoritmo
 de recomendação de amigos em uma plataforma. 
 
 O objetivo é determinar se o novo algoritmo aumenta
@@ -98,7 +98,7 @@ novos amigos dos dois algoritmos. Como o intervalo não contém o valor zero e a
 há evidências de que o novo algoritmo funciona, visto que aumenta o número de amigos novos de um
 usuário.
 
-\033[1mQuestão 7. Suponha que você está conduzindo um estudo para comparar duas plataformas de produção
+\033[1m\033[94mQuestão 7.\033[0m\033[1m Suponha que você está conduzindo um estudo para comparar duas plataformas de produção
 musical online, a BeatMaster e a MelodiaFlow, em termos de tempo médio gasto pelos usuários na criação
 de uma faixa musical completa. A plataforma BeatMaster oferece uma interface tradicional de produção
 musical, enquanto a plataforma MelodiaFlow oferece recursos avançados de inteligência artificial para
