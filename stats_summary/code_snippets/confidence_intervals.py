@@ -1,4 +1,4 @@
-confidence_intervals_code_snippet = """
+code_snippet = """
 \033[1m\033[94m[CONFIDENCE INTERVAL FOR A SINGLE SAMPLE MEAN]\033[0m
 
 \033[92mimport numpy as np
