@@ -26,7 +26,7 @@ class Catalogue:
 
     @staticmethod
     def get_test(test_name):
-        test_details = test_index[test_name]
+        test_details = test_index.get(test_name, {})
         if test_details is None:
             print(f'Test {test_name} not found')
             return
@@ -36,7 +36,7 @@ class Catalogue:
 
     @staticmethod
     def get_examples(test_name):
-        examples = str(test_index[test_name].get('examples', ''))
+        examples = str(test_index.get(test_name, {}).get('examples', ''))
         print(f'[{test_name.upper()} EXAMPLES]\n{examples}')
 
     @staticmethod
